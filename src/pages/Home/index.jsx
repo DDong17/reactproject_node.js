@@ -1,6 +1,7 @@
+import { Banner } from "../../components/Banner";
 const Home = () =>{
     return (
-        <div className="text-white"> HomexZcsdASDADA</div>
+        <Banner/>
     )
 }
 
