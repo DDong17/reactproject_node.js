@@ -1,10 +1,10 @@
 const {faker} = require('@faker-js/faker');
 const MongoCilent=require("mongodb").MongoClient;
 const _ = require("lodash");
-
+//mongodb+srv://DongHoHwang:wjdgP1202!@cluster0.se1eelf.mongodb.net/test
+//mongodb://localhost://27017
 async function main(){
-    const uri="mongodb+srv://DongHoHwang:wjdgP1202!@cluster0.se1eelf.mongodb.net/test";
-    //const uri="mongodb://localhost://27017";
+    const uri="mongodb://localhost://27017";
     const client = new MongoCilent(uri);
 
     try{
