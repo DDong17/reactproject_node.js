@@ -1,33 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    product:[]
+    products: []
 }
 
-export const createSlice=createSlice({
-    name:'cart',
+export const cartSlice = createSlice({
+    name: 'cart',
     initialState,
-    reducers:{
-        addToCart:(state,action) => {
-            return {product:[...state.product,{...action.payload,amount:1}]}
+    reducers: {
+        addToCart: (state, action) => {
+            return { products: [...state.products, {...action.payload, amount: 1}]}
         },
-        clearCart:(state) =>{
-            return{product:[]}
+        clearCart: (state) => {
+            return { products: []}
         },
-        increamentProductAmout:(state,action)=>{
-            return{products:state.products.map(product =>product.id===action.payload.id?{...product,amout:product.amout+1}:product)}
+        incrementProductAmount: (state, action) => {
+            console.log('increment');
+            return { products: state.products.map(product => product.id === action.payload.id ? {...product, amount: product.amount + 1} : product)}
         },
-        decrementProductAmount:(state,action)=>{
-            return{products:state.products.map(product =>product.id===action.payload.id?{...product,amout:product.amout-1}:product)}
+        decrementProductAmount: (state, action) => {
+            return { products: state.products.map(product => product.id === action.payload.id ? {...product, amount: product.amount - 1} : product)}
         }
-
-        
     }
-
 })
 
-export const cartProducts = state =>state.cart.products
+export const cartProducts = state => state.cart.products
 
-export const {addToCart,clearCart,increamentProductAmout,decrementProductAmount}=createSlice.actions
+export const {  addToCart, clearCart, incrementProductAmount, decrementProductAmount } = cartSlice.actions
 
-export default createSlice.reducer
+export default cartSlice.reducer
