@@ -1,6 +1,31 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts,selectAllProducts } from "../../stores/menu/productSlice";
+import ProductDetailCard from"../../components/ProductDetailCard";
 const Menu = () =>{
+    const dispatch =useDispatch();
+    const products=useSelector(selectAllProducts);
+
+    useEffect(()=>{
+        dispatch(fetchProducts())
+    },[])
+
     return (
-        <>Menu</>
+        <div className="bg-white">
+            {
+                products.status ==='pending' ?
+                <div>Loading...</div>:
+                <div className="menu-wrapper">
+                    {
+                        products.products && products.products[0].products.map((product,index)=>{
+                            return(
+                                <ProductDetailCard key={index} product={product}/>
+                            )
+                        })
+                    }
+                </div>
+            }
+        </div>
     )
 }
 
